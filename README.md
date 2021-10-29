@@ -1,2 +1,2 @@
 # Project_Botanical_Garden
-DPS_Project_1_Nico_Namik_Vignesh
+DPS_Project_1_Nico_Namik_Vignesh_Omer
