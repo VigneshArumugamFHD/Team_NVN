@@ -38,7 +38,7 @@ void *functionCount1()
 
       pthread_mutex_lock( &count_mutex );
       count++;
-      printf("Counter value functionCount1: %d\n",count);
+      printf("Total Vistors inside the Garden[West Gate]: %d\n",count);
       pthread_mutex_unlock( &count_mutex );
 
       if(count >= COUNT_DONE) return(NULL);
@@ -58,7 +58,7 @@ void *functionCount2()
 
        pthread_mutex_lock( &count_mutex );
        count++;
-       printf("Counter value functionCount2: %d\n",count);
+       printf("Total Vistors inside the Garden[East Gate]: %d\n",count);
        pthread_mutex_unlock( &count_mutex );
 
        if(count >= COUNT_DONE) return(NULL);
