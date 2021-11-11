@@ -2,11 +2,20 @@
 #include<conio.h>
 #include<pthread.h>
 
+
+
+void platooning_Initialization();
+
+
 void main()
 {
 
    /*Starting of PLatoon*/
        /* - */
+	   
+	static int NumofTrucks;
+	
+	
     
     platooning_Initialization();
 
@@ -35,5 +44,17 @@ void main()
 
 
 
+}
+
+void platooning_Initialization()
+{
+	
+	
+	static int DesiredDistance;
+	
+	
+	
+	
+	
 }
 
