@@ -10,13 +10,13 @@ pthread_cond_t  condition_cond  = PTHREAD_COND_INITIALIZER;
 void *functionCount1();
 void *functionCount2();
 int  count = 0;
-#define COUNT_DONE  93
-#define COUNT_HALT1  2
-#define COUNT_HALT2  4
+#define COUNT_DONE  99
+#define COUNT_HALT1  3
+#define COUNT_HALT2  6
 
 int main()
 {
-   #pragma omp parallel num_threads(4)
+   #pragma omp parallel num_threads(8)
    {
 
    pthread_t thread1, thread2;
