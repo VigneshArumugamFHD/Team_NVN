@@ -53,8 +53,51 @@ void main()
    pthread_join( thread4, NULL);
    pthread_join( thread5, NULL);
    pthread_join( thread6, NULL);
-   }
+   }	
+    
+    //initializePlatoon();
 
+    //Update_Leader_coordinates();
+
+
+    //while()
+    //{
+
+        /*Error handling*/
+		/*Checking for coupling & de-coupling*/
+    //}
+
+}
+
+
+
+void* GetCoordinates()
+{
+	
+	pthread_mutex_lock( &count_mutex );
+	
+	printf("Please enter number of trucks: ");
+	scanf("%d", &nTrucks);
+	printf("Please enter number of distance: ");
+	scanf("%d", &dis);
+	printf("Please enter start of x coordinate: ");
+	scanf("%d", &x1);
+	printf("Please enter start of y coordinate: ");
+	scanf("%d", &y1);
+	
+	
+	int * arr;
+	
+	
+	int arrx[nTrucks];
+	int arry[nTrucks];
+	arrx[0] = x1;
+	arry[0] = y1;
+	for(int i = 1; i < nTrucks; i++)
+	{
+		arrx[i] = arrx[i-1] + dis;
+		arry[i] = arry[i-1] + dis;
+	}
 	
 	while(true)
 	{
@@ -82,48 +125,10 @@ void main()
 		j++;
 	}
 	EndWhile: ;
-	return 0;
-    
-    //initializePlatoon();
-
-    Update_Leader_coordinates();
-
-
-    while()
-    {
-
-        /*Error handling*/
-		/*Checking for coupling & de-coupling*/
-    }
-
-}
-
-
-
-void* GetCoordinates()
-{
-	printf("Please enter number of trucks: ");
-	scanf("%d", &nTrucks);
-	printf("Please enter number of distance: ");
-	scanf("%d", &dis);
-	printf("Please enter start of x coordinate: ");
-	scanf("%d", &x1);
-	printf("Please enter start of y coordinate: ");
-	scanf("%d", &y1);
+	
+	pthread_mutex_unlock( &count_mutex );
 	
 	
-	int * arr;
-	
-	
-	int arrx[nTrucks];
-	int arry[nTrucks];
-	arrx[0] = x1;
-	arry[0] = y1;
-	for(int i = 1; i < nTrucks; i++)
-	{
-		arrx[i] = arrx[i-1] + dis;
-		arry[i] = arry[i-1] + dis;
-	}
 }
 
 int *initilizePlatoon(int n,int d, int x1, int y1)
