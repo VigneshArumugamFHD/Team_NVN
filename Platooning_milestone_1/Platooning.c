@@ -1,6 +1,15 @@
 #include<stdio.h>
 #include<conio.h>
-#include<pthread.h>
+#include <pthread.h>
+#include <omp.h>
+
+pthread_mutex_t count_mutex     = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t condition_mutex = PTHREAD_MUTEX_INITIALIZER;
+pthread_cond_t  condition_cond  = PTHREAD_COND_INITIALIZER;
+
+void *MeasureRvelocity();
+void *MeasureDistance();
+void *GetAcceleration();
 
 int *initializePlatoon(int n,int d, int x1, int y1);
 
@@ -8,7 +17,7 @@ int *initializePlatoon(int n,int d, int x1, int y1);
 void main()
 {
 
-   /*Starting of PLatoon*/
+   /*Initializing the variables of Platoon*/
 	int nTrucks;
 	int dis;
 	int x1, y1;
