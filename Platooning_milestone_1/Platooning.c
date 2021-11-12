@@ -2,6 +2,7 @@
 #include<conio.h>
 #include <pthread.h>
 #include <omp.h>
+#include <stdbool.h>
 
 pthread_mutex_t count_mutex     = PTHREAD_MUTEX_INITIALIZER;
 pthread_mutex_t condition_mutex = PTHREAD_MUTEX_INITIALIZER;
@@ -79,7 +80,7 @@ void main()
 	EndWhile: ;
 	return 0;
     
-    initializePlatoon();
+    //initializePlatoon();
 
     Update_Leader_coordinates();
 
@@ -89,11 +90,11 @@ void main()
        /* - coordinates of the truck want to be tracked*/
        /* -*/
 
-    while()
-    {
+   // while()
+    //{
         /*Error handling*/
 		/*Checking for coupling & de-coupling*/
-    }
+    //}
 
 }
 
