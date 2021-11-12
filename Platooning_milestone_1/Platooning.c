@@ -9,7 +9,6 @@ void main()
 {
 
    /*Starting of PLatoon*/
-       /* - */	
 	int nTrucks;
 	int dis;
 	int x1, y1;
@@ -37,14 +36,18 @@ void main()
 	int arry[nTrucks];
 	arrx[0] = x1;
 	arry[0] = y1;
-	for(int i = 1; i < nTrucks; i++){
+	for(int i = 1; i < nTrucks; i++)
+	{
 		arrx[i] = arrx[i-1] + dis;
 		arry[i] = arry[i-1] + dis;
 	}
 	
-	while(true){
-		for(int k = j*nSteps; k < nSteps*(j+1); k++){
-			for(int i = 0; i < nTrucks; i++){
+	while(true)
+	{
+		for(int k = j*nSteps; k < nSteps*(j+1); k++)
+		{
+			for(int i = 0; i < nTrucks; i++)
+			{
 				printf("x%d:%d-y%d:%d\n",i+1,arrx[i] + k*dis,i+1,arry[i] + k*dis);
 			}
 			printf("\n");
@@ -55,14 +58,13 @@ void main()
 		printf("\n");
 		scanf("%d",&platooning);
 		//printf("%d",platooning);
-		switch(platooning){
+		switch(platooning)
+		{
 			case 0:
 				goto EndWhile;
 				break;
 		
-		}
-		
-		
+		}		
 		j++;
 	}
 	EndWhile: ;
@@ -86,7 +88,8 @@ void main()
 
 }
 
-int *initilizePlatoon(int n,int d, int x1, int y1){
+int *initilizePlatoon(int n,int d, int x1, int y1)
+{
 	
 	
 	
