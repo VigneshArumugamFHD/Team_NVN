@@ -51,7 +51,10 @@ void *WestGateEntry()
       printf("Total Visitors inside the Garden[West Gate Entry]: %d\n",count);
       pthread_mutex_unlock( &count_mutex );
 
-      if(count >= COUNT_DONE) return(NULL);
+      if(count >= COUNT_DONE)
+	  {
+		  return(NULL);
+	  }
    }
 }
 
@@ -71,7 +74,10 @@ void *WestGateExit()
       printf("Total Visitors inside the Garden[West Gate Exit]: %d\n",count);
       pthread_mutex_unlock( &count_mutex );
 
-      if(count >= COUNT_DONE) return(NULL);
+      if(count <= 0)
+	  {
+		  return(NULL);
+	  }
    }
 }
 
@@ -112,7 +118,10 @@ void *EastGateExit()
        printf("Total Visitors inside the Garden[East Gate Exit]: %d\n",count);
        pthread_mutex_unlock( &count_mutex );
 
-       if(count >= COUNT_DONE) return(NULL);
+       if(count <= 0)
+	  {
+		  return(NULL);
+	  }
     }
 
 }

@@ -10,46 +10,50 @@ pthread_cond_t  condition_cond  = PTHREAD_COND_INITIALIZER;
 void *MeasureRvelocity();
 void *MeasureDistance();
 void *GetAcceleration();
+void *GetCoordinates();
+void *Decoupling();
+void *Coupling();
 
 int *initializePlatoon(int n,int d, int x1, int y1);
 
 
+/*Initializing the variables of Platoon*/
+int nTrucks;
+int dis;
+int x1, y1;
+int rVelocity;
+int accel;
+int choice;
+int nSteps = 5;
+int j = 0;
+bool platooning;
+
+
+
 void main()
 {
+	
+	/*Threads for the platooning*/
+#pragma omp parallel num_threads(8)
+   {
 
-   /*Initializing the variables of Platoon*/
-	int nTrucks;
-	int dis;
-	int x1, y1;
-	int rVelocity;
-	int accel;
-	int choice;
-	int nSteps = 5;
-	int j = 0;
-	bool platooning;
-	
-	printf("Please enter number of trucks: ");
-	scanf("%d", &nTrucks);
-	printf("Please enter number of distance: ");
-	scanf("%d", &dis);
-	printf("Please enter start of x coordinate: ");
-	scanf("%d", &x1);
-	printf("Please enter start of y coordinate: ");
-	scanf("%d", &y1);
-	
-	
-	int * arr;
-	
-	
-	int arrx[nTrucks];
-	int arry[nTrucks];
-	arrx[0] = x1;
-	arry[0] = y1;
-	for(int i = 1; i < nTrucks; i++)
-	{
-		arrx[i] = arrx[i-1] + dis;
-		arry[i] = arry[i-1] + dis;
-	}
+   pthread_t thread1, thread2,thread3,thread4,thread5,thread6;
+
+   pthread_create( &thread1, NULL, &MeasureRvelocity, NULL);
+   pthread_create( &thread2, NULL, &MeasureDistance, NULL);
+   pthread_create( &thread3, NULL, &GetAcceleration, NULL);
+   pthread_create( &thread4, NULL, &Decoupling, NULL);
+   pthread_create( &thread5, NULL, &Coupling, NULL);
+   pthread_create( &thread5, NULL, &GetCoordinates, NULL);
+   
+   pthread_join( thread1, NULL);
+   pthread_join( thread2, NULL);
+   pthread_join( thread3, NULL);
+   pthread_join( thread4, NULL);
+   pthread_join( thread5, NULL);
+   pthread_join( thread6, NULL);
+   }
+
 	
 	while(true)
 	{
@@ -84,17 +88,40 @@ void main()
     Update_Leader_coordinates();
 
 
-
-   /*Loop of the PLatoon*/
-       /* - coordinates of the truck want to be tracked*/
-       /* -*/
-
     while()
     {
         /*Error handling*/
 		/*Checking for coupling & de-coupling*/
     }
 
+}
+
+
+
+void* GetCoordinates()
+{
+	printf("Please enter number of trucks: ");
+	scanf("%d", &nTrucks);
+	printf("Please enter number of distance: ");
+	scanf("%d", &dis);
+	printf("Please enter start of x coordinate: ");
+	scanf("%d", &x1);
+	printf("Please enter start of y coordinate: ");
+	scanf("%d", &y1);
+	
+	
+	int * arr;
+	
+	
+	int arrx[nTrucks];
+	int arry[nTrucks];
+	arrx[0] = x1;
+	arry[0] = y1;
+	for(int i = 1; i < nTrucks; i++)
+	{
+		arrx[i] = arrx[i-1] + dis;
+		arry[i] = arry[i-1] + dis;
+	}
 }
 
 int *initilizePlatoon(int n,int d, int x1, int y1)
