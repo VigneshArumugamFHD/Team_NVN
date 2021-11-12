@@ -29,12 +29,6 @@ void *functionCount1()
 {
    for(;;)
    {
-      pthread_mutex_lock( &condition_mutex );
-      while( count >= COUNT_HALT1 && count <= COUNT_HALT2 )
-      {
-         pthread_cond_wait( &condition_cond, &condition_mutex );
-      }
-      pthread_mutex_unlock( &condition_mutex );
 
       pthread_mutex_lock( &count_mutex );
       count++;
@@ -49,12 +43,6 @@ void *functionCount2()
 {
     for(;;)
     {
-       pthread_mutex_lock( &condition_mutex );
-       if( count < COUNT_HALT1 || count > COUNT_HALT2 )
-       {
-          pthread_cond_signal( &condition_cond );
-       }
-       pthread_mutex_unlock( &condition_mutex );
 
        pthread_mutex_lock( &count_mutex );
        count++;
