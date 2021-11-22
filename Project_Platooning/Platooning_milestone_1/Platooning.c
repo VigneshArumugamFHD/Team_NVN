@@ -1,80 +1,29 @@
 #include<stdio.h>
 #include<conio.h>
-#include <pthread.h>
 #include <omp.h>
 #include <stdbool.h>
 
-pthread_mutex_t count_mutex     = PTHREAD_MUTEX_INITIALIZER;
-pthread_mutex_t condition_mutex = PTHREAD_MUTEX_INITIALIZER;
-pthread_cond_t  condition_cond  = PTHREAD_COND_INITIALIZER;
 
 void *MeasureRvelocity();
 void *MeasureDistance();
 void *GetAcceleration();
-void *GetCoordinates();
-void *Decoupling();
-void *Coupling();
 
 int *initializePlatoon(int n,int d, int x1, int y1);
 
 
-/*Initializing the variables of Platoon*/
-int nTrucks;
-int dis;
-int x1, y1;
-int rVelocity;
-int accel;
-int choice;
-int nSteps = 5;
-int j = 0;
-bool platooning;
-
-
-
 void main()
 {
-	
-	/*Threads for the platooning*/
-#pragma omp parallel num_threads(8)
-   {
 
-   pthread_t thread1, thread2,thread3,thread4,thread5,thread6;
-
-   pthread_create( &thread1, NULL, &MeasureRvelocity, NULL);
-   pthread_create( &thread2, NULL, &MeasureDistance, NULL);
-   pthread_create( &thread3, NULL, &GetAcceleration, NULL);
-   pthread_create( &thread4, NULL, &Decoupling, NULL);
-   pthread_create( &thread5, NULL, &Coupling, NULL);
-   pthread_create( &thread5, NULL, &GetCoordinates, NULL);
-   
-   pthread_join( thread1, NULL);
-   pthread_join( thread2, NULL);
-   pthread_join( thread3, NULL);
-   pthread_join( thread4, NULL);
-   pthread_join( thread5, NULL);
-   pthread_join( thread6, NULL);
-   }	
-    
-    //initializePlatoon();
-
-    //Update_Leader_coordinates();
-
-
-    //while()
-    //{
-
-        /*Error handling*/
-		/*Checking for coupling & de-coupling*/
-    //}
-
-}
-
-
-
-void* GetCoordinates()
-{
-	
-	pthread_mutex_lock( &count_mutex );
+   /*Initializing the variables of Platoon*/
+	int nTrucks;
+	int dis;
+	int x1, y1;
+	int rVelocity;
+	int accel;
+	int choice;
+	int nSteps = 5;
+	int j = 0;
+	bool platooning;
 	
 	printf("Please enter number of trucks: ");
 	scanf("%d", &nTrucks);
@@ -125,10 +74,24 @@ void* GetCoordinates()
 		j++;
 	}
 	EndWhile: ;
-	
-	pthread_mutex_unlock( &count_mutex );
-	
-	
+	return 0;
+    
+    //initializePlatoon();
+
+    Update_Leader_coordinates();
+
+
+
+   /*Loop of the PLatoon*/
+       /* - coordinates of the truck want to be tracked*/
+       /* -*/
+
+   // while()
+    //{
+        /*Error handling*/
+		/*Checking for coupling & de-coupling*/
+    //}
+
 }
 
 int *initilizePlatoon(int n,int d, int x1, int y1)
