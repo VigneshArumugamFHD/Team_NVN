@@ -1,12 +1,8 @@
 #include<stdio.h>
 #include<conio.h>
-#include <pthread.h>
 #include <omp.h>
 #include <stdbool.h>
 
-pthread_mutex_t count_mutex     = PTHREAD_MUTEX_INITIALIZER;
-pthread_mutex_t condition_mutex = PTHREAD_MUTEX_INITIALIZER;
-pthread_cond_t  condition_cond  = PTHREAD_COND_INITIALIZER;
 
 void *MeasureRvelocity();
 void *MeasureDistance();
