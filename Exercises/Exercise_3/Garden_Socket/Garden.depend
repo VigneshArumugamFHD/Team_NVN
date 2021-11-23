@@ -1,5 +1,6 @@
 # depslib dependency file v1.0
-1637614374 source:c:\program files\codeblocks\garden\main.c
+1637649156 source:c:\program files\codeblocks\garden\main.c
 	<stdio.h>
 	<winsock2.h>
+	<ws2tcpip.h>
 
