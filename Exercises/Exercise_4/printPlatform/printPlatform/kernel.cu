@@ -18,6 +18,7 @@ int main()
                 << platform.get_info< cl::sycl::info::platform::version >() << std::endl;
 
      
-                return 0;
             }
+
+            return 0;
 }
