@@ -33,7 +33,7 @@ int main() {
 
             clGetPlatformInfo(platforms[i], attributeTypes[j], infoSize, info, NULL);
 
-            printf("%s: %s\n", i + 1, j + 1, attributeNames[j], info);
+            printf("%s: %s\n", attributeNames[j], info);
 
             free(info);
 
