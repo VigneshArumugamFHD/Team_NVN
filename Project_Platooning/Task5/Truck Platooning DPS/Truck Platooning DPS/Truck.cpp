@@ -3,13 +3,17 @@
 
 
 Truck::Truck() {
+	idle = false;
+	on_move = false;
 	previousTruckPlate = "";
 };
 
 
 
+
+
 	
- double Truck::get_x_front_cor() {
+	double Truck::get_x_front_cor() {
 		return x_front_cor;
 	}
 	void Truck::set_x_front_cor(double xFrontCor) {
@@ -90,4 +94,13 @@ Truck::Truck() {
 	}
 	void Truck::setPreviousTruckPlate(string previous_truck_plate) {
 		previousTruckPlate = previous_truck_plate;
+	}
+
+	void Truck::setTruckId(int ID) {
+		truck_id = ID;
+	}
+
+
+	int Truck::getId() {
+		return truck_id;
 	}

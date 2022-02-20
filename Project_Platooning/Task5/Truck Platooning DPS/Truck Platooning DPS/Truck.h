@@ -8,6 +8,7 @@ using namespace std;
 class Truck
 {
 private:
+	
 	double x_front_cor;
 	double y_front_cor;
 	double x_back_cor;
@@ -16,11 +17,15 @@ private:
 	bool on_move;
 	string truckPlate;
 	string previousTruckPlate;
+	int truck_id;
 
 public:
 
 	Truck();
 	
+	void setTruckId(int ID);
+	int getId();
+
 	string getTruckPlate();
 	void setTruckPlate(string truck_plate);
 

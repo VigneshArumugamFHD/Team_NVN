@@ -1,19 +1,117 @@
-#include<iostream>
+
 #include "Truck.h"
 #include "Radar.h"
 #include "Camera.h"
 #include <vector>
+#include <thread>
+#include <iostream>
 
 using namespace std;
 
 
 
+Camera c1 = Camera();
+
+
+vector<Truck> removeTruckFrom(vector<Truck> v, int id) {
+	
+	v.erase(v.begin() + id);
+	return v;
+
+}
+
+vector<Truck> initializePlatoon() {
+
+	int n;
+	double first_turck_x_front_cor, first_turck_x_back_cor,
+		first_turck_y_front_cor, first_turck_y_back_cor, dis;
+	string plate_number;
+	string previous_truck_plate_number = "";          
+
+
+
+
+	cout << "Please insert number of trucks in the platoon:";
+	cin >> n;
+	cout << "Please insert front x coordinate of truck 1:";
+	cin >> first_turck_x_front_cor;
+	cout << "Please insert back x coordinates of truck 1:";
+	cin >> first_turck_x_back_cor;
+	cout << "Please insert front y coordinate of truck 1 :";
+	cin >> first_turck_y_front_cor;
+	cout << "Please insert front y coordinate of truck 1 :";
+	cin >> first_turck_y_back_cor;
+	//cout << "Please insert plate number of truck 1 :";
+	//cin >> plate_number;
+	cout << "Please enter desired distance between the trucks:";
+	cin >> dis;
+
+	//cout << plate_number;
+	//getline(cin, fullName);
+
+	vector<Truck > vect;
+
+	for (int i = 1; i <= n; i++) {
+		Truck t = Truck();
+
+		
+		t.set_x_front_cor(first_turck_x_back_cor + (i - 1) * dis);
+		t.set_x_back_cor(first_turck_x_back_cor + (i - 1) * dis);
+		t.set_y_front_cor(first_turck_y_front_cor);
+		t.set_y_back_cor(first_turck_y_back_cor);
+		t.setPreviousTruckPlate(previous_truck_plate_number);
+
+		cout << "Please insert plate number of truck " << i << " :";
+		cin >> plate_number;
+		t.setTruckPlate(plate_number);
+		previous_truck_plate_number = plate_number;
+		vect.push_back(t);
+
+	}
+
+	return vect;
+}
+
+
 void printVectorElemenst(vector<Truck> &vectTruck) {
 
 	for (Truck i : vectTruck) {
-		cout << i.getTruckPlate() << endl;
+		//cout << i.get_x_front_cor();
+		//cout << endl;
+		//cout << i.get_x_back_cor() ;
+		//cout << endl;
+		//cout << i.get_y_front_cor() ;
+		//cout <<  endl;
+		//cout << i.get_y_back_cor();
+		//cout << endl;
+		cout << i.getTruckPlate() << "  ==> ";
+		cout << i.getPreviousTruckPlate() ;
+		//cout << endl;
+		
+		cout << endl;
 	}
 
+}
+
+void doSomething(vector<Truck> v,  Truck refT) {
+	cout << c1.captureIntruder(v, refT) << " id is : " << c1.findIndex(v, refT) << endl;
+	//cout << c1.findIndex(v, refT) << endl;g
+}
+
+void checkIntruder(vector<Truck> v) {
+
+	int size = v.size();
+	vector<thread> threads(size);
+	int j = 0;
+	for (Truck i : v) {
+		threads[j] = thread(doSomething,v, i);
+		j++;
+	}
+
+
+	for (auto& th : threads) {
+		th.join();
+	}
 }
 
 int main() {
@@ -25,7 +123,22 @@ int main() {
 	Radar r1 = Radar();
 	Camera c1 = Camera();
 
+	vector<Truck> platoon = initializePlatoon();
 
+	//printVectorElemenst(platoon);
+	//platoon = removeTruckFrom(platoon, 1);
+	
+	checkIntruder(platoon);
+	//printVectorElemenst(platoon);
+
+	
+	
+
+	//printVectorElemenst(vect);
+
+	//cout << n << endl;
+
+	/*
 	t1.set_x_front_cor(0.0);
 	t1.set_y_front_cor(5.0);
 	t1.set_x_back_cor(20.0);
@@ -77,7 +190,7 @@ int main() {
 
 	cout << c1.captureIntruder(vect, t2) << " result from capture intruder function " << endl;
 
-
+	*/
 	return 0;
 
 }

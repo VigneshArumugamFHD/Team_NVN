@@ -2,12 +2,21 @@
 
 #include<vector>
 #include<iostream>
+#include<thread>
 
 using namespace std;
 
 
 Camera::Camera() {
 };
+
+
+void Camera::checkIntruder(vector<Truck> vectTruck, Truck refT) {
+    
+    
+
+}
+
 
 bool Camera::captureIntruder (vector<Truck> vectTruck, Truck refT) {
 
@@ -36,6 +45,9 @@ bool Camera::captureIntruder (vector<Truck> vectTruck, Truck refT) {
         }
     }
 }
+
+
+
 
 int Camera::findIndex(vector<Truck> vectTruck, Truck refT) {
     int j = 0;
