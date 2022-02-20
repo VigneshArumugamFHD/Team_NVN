@@ -1,0 +1,8 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (Platooning_GPU.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  Compiling CUDA source file Main.cu...
+  
+  C:\Users\nmtun\Documents\GitHub\Team_UNKNOWN\Project_Platooning\Task5\Platooning_GPU>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.5\bin\nvcc.exe" -gencode=arch=compute_52,code=\"sm_52,compute_52\" --use-local-env -ccbin "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\bin\HostX86\x64" -x cu   -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.5\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.5\include"  -G   --keep-dir x64\Debug  -maxrregcount=0  --machine 64 --compile -cudart static  -g  -D"WIN32" -D"WIN64" -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Fdx64\Debug\vc142.pdb /FS /Zi /RTC1 /MDd " -o x64\Debug\Main.cu.obj "C:\Users\nmtun\Documents\GitHub\Team_UNKNOWN\Project_Platooning\Task5\Platooning_GPU\Main.cu" 
+  Main.cu
+C:\Users\nmtun\Documents\GitHub\Team_UNKNOWN\Project_Platooning\Task5\Platooning_GPU\Main.cu(60): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\nmtun\Documents\GitHub\Team_UNKNOWN\Project_Platooning\Task5\Platooning_GPU\Main.cu(85): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  Platooning_GPU.vcxproj -> C:\Users\nmtun\Documents\GitHub\Team_UNKNOWN\Project_Platooning\Task5\Platooning_GPU\x64\Debug\Platooning.exe
