@@ -3,15 +3,13 @@
 #include <omp.h>
 #include <stdbool.h>
 
-
 void *MeasureRvelocity();
 void *MeasureDistance();
 void *GetAcceleration();
 
 int *initializePlatoon(int n,int d, int x1, int y1);
 
-
-void main()
+int main()
 {
 
    /*Initializing the variables of Platoon*/
@@ -44,8 +42,8 @@ void main()
 	arry[0] = y1;
 	for(int i = 1; i < nTrucks; i++)
 	{
-		arrx[i] = arrx[i-1] + dis;
-		arry[i] = arry[i-1] + dis;
+		arrx[i] = arrx[i-1] - dis;
+		arry[i] = arry[i-1] - dis;
 	}
 	
 	while(true)
@@ -78,10 +76,6 @@ void main()
     
     //initializePlatoon();
 
-    Update_Leader_coordinates();
-
-
-
    /*Loop of the PLatoon*/
        /* - coordinates of the truck want to be tracked*/
        /* -*/
@@ -91,12 +85,4 @@ void main()
         /*Error handling*/
 		/*Checking for coupling & de-coupling*/
     //}
-
-}
-
-int *initilizePlatoon(int n,int d, int x1, int y1)
-{
-	
-	
-	
 }
